@@ -7,7 +7,7 @@
 
 class NumList{
     public:
-	static const size_t CAPACITY = 100;
+	static const size_t CAPACITY = 150;
 	
 	// Default constructor
 	NumList();
@@ -27,12 +27,12 @@ class NumList{
 	// Postconditon: numbers in the object are written to the file
 	void save_to_file(std::ostream& outs);
 
-	void b_sort();
+	void b_sort();                                                                                  ///sorts the data in the object
 	int get_item(size_t index)const;
-	void see_all()const;
+	void see_all()const;                                                                            ///lists all items in the object
     private:
 	int data[CAPACITY];
-	size_t used;
+	size_t used;                                                                                    ///the number of used spots in the alotted CAPACITY
 };
 
 #endif

@@ -7,21 +7,17 @@
 
 using namespace std;
 
-
-
-
 int main()
 {
     cout << "Enter your file name." << endl;
     string filename;
     cin >> filename;
 
-    fstream ins;
+    ifstream ins;
     ins.open(filename);
-    if(ins.fail())
+    if (ins.fail())
     {
         cout << "Error in opening file" << endl;
-
     }
 
     NumList a;
@@ -41,42 +37,52 @@ int main()
     a.insert(b);
     a.insert(z);
 
-    cout << endl; 
+    cout << endl;
     a.b_sort();
     a.see_all();
 
-    fstream outstream;
-    outstream.open(filename);
-    if(outstream.fail())
+    int dot_index;
+    dot_index = filename.find(".");
+    string new_filename = filename.insert(dot_index, "sorted");
+    
+    ofstream outstream;
+    outstream.open(new_filename);
+    if (outstream.fail())
     {
         cout << "error in opening output file" << endl;
     }
 
-    a.save_to_file(outstream);;
-    
-    int dot_index;
-    dot_index = filename.find(".");
-    string new_filename = filename.insert(dot_index, "sorted");
+    a.save_to_file(outstream);
+    ;
 
-    char oldname[50] = {0};
-    for(int i = 0; i <= filename.size(); ++i)
-    {
-        oldname[i] = filename[i];
-    }
+
+    ins.close();
+    outstream.close();
+
+    /**char oldname[50] = {0};
+    for (int i = 0; i <= filename.size(); ++i)
+        if (oldname[i] != 0)
+        {
+            oldname[i] = filename[i];
+        }
     char newname[50] = {0};
-    for(int i = 0; i <= new_filename.size(); ++i)
+    for (int i = 0; i <= new_filename.size(); ++i)
     {
-        oldname[i] = new_filename[i];
+        if ()
+        {
+            oldname[i] = new_filename[i];
+        }
     }
-    rename(oldname, newname);
+
+    if (rename(oldname, newname) != 0)
+    {
+        cout << "Error in renaming file." << endl;
+        cout << endl;
+    }
+    else
+    {
+        cout << "Success!!!" << endl;
+    }**/
 
     
-
-    
-
-
-    
-
-
-
 }
